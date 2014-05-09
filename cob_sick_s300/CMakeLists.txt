@@ -9,6 +9,9 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 #  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
 #set(ROS_BUILD_TYPE RelWithDebInfo)
 
+# add include search paths
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/common/include)
+
 rosbuild_init()
 # Put this line before the executable or library:
 rosbuild_add_boost_directories()
@@ -31,8 +34,6 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/ros/lib)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
 
-# add include search paths
-INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/common/include)
 
 SET(OODL_SickS300_SRC
   ${PROJECT_SOURCE_DIR}/common/src/Errors.cpp
@@ -40,7 +41,6 @@ SET(OODL_SickS300_SRC
  # ${PROJECT_SOURCE_DIR}/common/src/LaserScannerData.cpp
   ${PROJECT_SOURCE_DIR}/common/src/LaserScannerConfiguration.cpp
  # ${PROJECT_SOURCE_DIR}/common/src/LaserScannerDataWithIntensities.cpp
-  ${PROJECT_SOURCE_DIR}/common/src/SickS300.cpp
   ${PROJECT_SOURCE_DIR}/common/src/ScannerSickS300.cpp
   ${PROJECT_SOURCE_DIR}/common/src/SerialIO.cpp
 )
